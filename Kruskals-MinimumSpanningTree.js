@@ -30,7 +30,6 @@ function checkCycle(path, disJointSets) {
         disJointSets[sourceIndex] = disJointSets[sourceIndex].concat(disJointSets[destinationIndex]);
         delete disJointSets[destinationIndex]
     }
-    
     return true;
 }
 function kruskals(tree) {
