@@ -50,10 +50,12 @@ class LinkedList {
     }
 
     deleteFirst() {
+        let deleted;
         if(this.head) {
-            console.log(`deleted Element: ${this.head.data}`);
+            deleted = this.head;
             this.head = this.head.next;
         }
+        return deleted.data;
     }
 
     deleteLast() {
@@ -114,21 +116,37 @@ class LinkedList {
         };
         this.head = temp;
     }
+
+    reversePairWise() {
+
+    }
 }
 
+function reversePairWiseRecursive(head) {
+    let temp;
+    if(head==null || head.next==null) {
+        return;
+    }else {
+        // reverse first pair;
+        temp = head.next;
+        head.next = temp.next;
+        temp.next = head;
+        head = temp;
+    }
+}
 exports.LinkedList = LinkedList;
 
-const linkedList = new LinkedList();
-linkedList.addNodeAtFirst(5);
-linkedList.addNodeAtFirst(2);
-linkedList.addNodeAtFirst(3);
-linkedList.addNodeAtLast(6);
-linkedList.displayList();
+// const linkedList = new LinkedList();
+// linkedList.addNodeAtFirst(5);
+// linkedList.addNodeAtFirst(2);
+// linkedList.addNodeAtFirst(3);
+// linkedList.addNodeAtLast(6);
+// linkedList.displayList();
 // linkedList.addNodeAtIndex(9,3);
 // linkedList.displayList();
 // console.log('before delete');
 // linkedList.deleteLast();
 // console
-linkedList.reverseLinkedList();
-linkedList.displayList();
+// linkedList.reverseLinkedList();
+// linkedList.displayList();
 
