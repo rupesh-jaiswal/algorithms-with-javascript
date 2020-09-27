@@ -127,7 +127,7 @@ class Tree {
             }
         }    
     }
-
+    // traversing
     preOrder(root) {
         if(root) {
             console.log(root.data);
@@ -205,6 +205,7 @@ class Tree {
             }
         }while(!stack.isEmpty());
     }
+    // findmax and min
     findMax = (root) => {
         let rootVal, left, right, max = 0;
 
@@ -368,6 +369,20 @@ class Tree {
             default: this.levelOrder(this.root);
         }
     }
+
+    noOfLeaves() {
+        return this.findNoOfLeavesRecursively(this.root);
+    }
+
+    findNoOfLeavesRecursively(root) {
+        if(!root) {
+            return 0;
+        }
+        if(!root.left && !root.right) {
+            return 1;
+        }
+        return this.findNoOfLeavesRecursively(root.left) + this.findNoOfLeavesRecursively(root.right);
+    }
 }
 
 const tree = new Tree();
@@ -377,8 +392,6 @@ tree.add(3);
 tree.add(4);
 tree.add(5);
 tree.add(9);
-tree.add(10);
-tree.add(11);
 console.log('level-order');
 tree.traverse();
 // console.log(tree.isPresent(3));
@@ -390,6 +403,7 @@ tree.traverse();
 // tree.traverse('in-order');
 // console.log('Post-order');
 // tree.traverse('post-order');
-console.log('after delete');
-tree.remove(3);
-tree.traverse();
+// console.log('after delete');
+// tree.remove(3);
+// tree.traverse();
+console.log('no of leaves: ', tree.noOfLeaves());
