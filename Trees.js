@@ -374,6 +374,27 @@ class Tree {
         return this.findNoOfLeavesRecursively(this.root);
     }
 
+    noOfFullNodes() {
+        const nodOFFullnodes =  this.findNoOFFullNodesRecursively(this.root);
+        return nodOFFullnodes;
+    }
+
+    findNoOFFullNodesRecursively(root) {
+        if(!root) {
+            return 0;
+        }
+        console.log(root);
+        if(root.right && root.left) {
+            return (this.findNoOFFullNodesRecursively(root.left)+this.findNoOFFullNodesRecursively(root.right)+1);
+        }
+        if(root.left) {
+            return this.findNoOFFullNodesRecursively(root.left);
+        }
+        if(root.right) {
+            return this.findNoOFFullNodesRecursively(root.right);
+        }
+        return 0;
+    }
     findNoOfLeavesRecursively(root) {
         if(!root) {
             return 0;
@@ -392,6 +413,7 @@ tree.add(3);
 tree.add(4);
 tree.add(5);
 tree.add(9);
+tree.add(10);
 console.log('level-order');
 tree.traverse();
 // console.log(tree.isPresent(3));
@@ -407,3 +429,4 @@ tree.traverse();
 // tree.remove(3);
 // tree.traverse();
 console.log('no of leaves: ', tree.noOfLeaves());
+console.log('no of full nodes: ', tree.noOfFullNodes());
