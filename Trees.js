@@ -39,9 +39,94 @@ class Tree {
         }
         
     }
-    // remove(root, data) {
-    //     if(root.data)
-    // }
+
+
+    findDeepestNode(root) {
+        const queue = [];
+        if(!root) {
+            return;
+        }
+        queue.push({
+            node: root,
+            position: '',
+        });
+        let temp;
+        while(queue.length) {
+            root = queue.shift();
+            const { position, node } =root;
+            if(position) {
+                temp = node[position];
+            }else {
+                temp= node;
+            }
+            if(temp.left) {
+                queue.push({
+                    node: temp,
+                    position: 'left',
+                });
+            }
+            if(temp.right) {
+                queue.push({
+                    node: temp,
+                    position: 'right',
+                });
+            }
+        }
+        return root;
+    }
+    remove(data) {
+        if(!this.root) {
+            return;
+        }
+        if(this.root.data===data) {
+            if(!this.root.left && !this.root.right) {
+                this.root = null;
+            }
+        }else {
+            const queue = [];
+            let isFound = true;
+            let foundNodeInfo = {}
+            queue.push(this.root);
+            while(queue.length) {
+                root = queue.shift();
+                
+                if(root.left) {
+                    if(root.left.data === data) {
+                        isFound=true;
+                        foundNodeInfo= {
+                            parent: root,
+                            position: 'left', 
+                        };
+                        break;
+                    }
+                    queue.push(root.left);
+                }
+                if(root.right) {
+                    if(root.right.data === data) {
+                        isFound=true;
+                        foundNodeInfo= {
+                            parent: root,
+                            position: 'right', 
+                        };
+                        break;
+                    }
+                    queue.push(root.right);
+                }
+            }
+            if(isFound) {
+                // if found get the deepest node parent with position of its leaf
+                const {parent, position} = foundNodeInfo;
+                const deepestNode = this.findDeepestNode(parent[position]);
+                const { position: deepestNodeposition, node}  = deepestNode;
+                if(deepestNodeposition) {
+                    parent[position].data = node[deepestNodeposition].data;
+                    node[deepestNodeposition]=null;
+                }else {
+                    parent[position] = null;
+                }
+            }
+        }    
+    }
 
     preOrder(root) {
         if(root) {
@@ -296,13 +381,15 @@ tree.add(10);
 tree.add(11);
 console.log('level-order');
 tree.traverse();
-console.log(tree.isPresent(3));
-console.log(tree.isPresent(9));
-console.log(tree.height());
+// console.log(tree.isPresent(3));
+// console.log(tree.isPresent(9));
+// console.log(tree.height());
 // console.log(tree.getMax());
 // console.log(tree.getMin());
 // console.log('In-order');
 // tree.traverse('in-order');
 // console.log('Post-order');
 // tree.traverse('post-order');
-
+console.log('after delete');
+tree.remove(3);
+tree.traverse();
