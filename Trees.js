@@ -374,6 +374,25 @@ class Tree {
         return this.findNoOfLeavesRecursively(this.root);
     }
 
+    noOfHalfNodes () {
+        return this.findNoOfHalfNodesRecursively(this.root);
+    }
+
+    findNoOfHalfNodesRecursively(root) {
+        if(!root){
+            return 0;
+        }
+        if(root.left && root.right) {
+            return this.findNoOfHalfNodesRecursively(root.left) + this.findNoOfHalfNodesRecursively(root.right);
+        }
+        if(root.left) {
+            return this.findNoOfHalfNodesRecursively(root.left)+1;
+        }
+        if(root.right) {
+            return this.findNoOfHalfNodesRecursively(root.right)+1
+        }
+        return 0;
+    }
     noOfFullNodes() {
         const nodOFFullnodes =  this.findNoOFFullNodesRecursively(this.root);
         return nodOFFullnodes;
@@ -383,7 +402,6 @@ class Tree {
         if(!root) {
             return 0;
         }
-        console.log(root);
         if(root.right && root.left) {
             return (this.findNoOFFullNodesRecursively(root.left)+this.findNoOFFullNodesRecursively(root.right)+1);
         }
@@ -395,6 +413,7 @@ class Tree {
         }
         return 0;
     }
+
     findNoOfLeavesRecursively(root) {
         if(!root) {
             return 0;
@@ -406,6 +425,8 @@ class Tree {
     }
 }
 
+module.exports = Tree;
+/*
 const tree = new Tree();
 tree.add(1);
 tree.add(2);
@@ -414,6 +435,7 @@ tree.add(4);
 tree.add(5);
 tree.add(9);
 tree.add(10);
+tree.add(11);
 console.log('level-order');
 tree.traverse();
 // console.log(tree.isPresent(3));
@@ -426,7 +448,9 @@ tree.traverse();
 // console.log('Post-order');
 // tree.traverse('post-order');
 // console.log('after delete');
-// tree.remove(3);
+// tree.remove(2);
 // tree.traverse();
 console.log('no of leaves: ', tree.noOfLeaves());
 console.log('no of full nodes: ', tree.noOfFullNodes());
+console.log('no of half nodes: ', tree.noOfHalfNodes());
+*/
