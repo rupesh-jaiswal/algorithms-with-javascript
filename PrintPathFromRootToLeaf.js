@@ -1,5 +1,5 @@
 const Tree = require('./Trees');
-
+// below function finds the path from root to all leafs
 function printRootToLeaf(root, path,pathLen) {
     if(!root) {
         return;
