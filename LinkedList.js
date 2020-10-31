@@ -94,7 +94,7 @@ class LinkedList {
             if(current==null) {
                 console.log('posiiton does not exists');
             }else {
-                
+                positionNode.next = current.next;
             }
         }
     }
