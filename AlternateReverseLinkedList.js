@@ -28,9 +28,9 @@ function alternateReverse(head) {
         slowPtr = slowPtr.next;
     }
 
-    if(fastPtr.next!==null) {
-        fastPtr = fastPtr.next;
-    }
+    // if(fastPtr.next!==null) {
+    //     fastPtr = fastPtr.next;
+    // }
 
     let head1 = reverseLinkedList(slowPtr.next);
     slowPtr.next = null;
@@ -58,5 +58,6 @@ linkedList.addNodeAtLast(6);
 linkedList.addNodeAtLast(7);
 linkedList.addNodeAtLast(8);
 linkedList.addNodeAtLast(9);
+linkedList.addNodeAtLast(10);
 linkedList.head = alternateReverse(linkedList.head);
 linkedList.displayList();
