@@ -9,6 +9,8 @@ function createMinHeap(arr) {
             if(heap[i]<heap[parentIndex]){
                swap(heap, i, parentIndex);
               i=parentIndex;
+            }else {
+              break;
             }
             
         }
@@ -48,7 +50,9 @@ function heapSort(arr, sortType='ASC') {
                 swap(minHeap, i, 2*i+2);
                 i=2*i+2;
             }
-            console.log(i);
+            //console.log(i);
+        }else {
+          break;
         }
       }
         
@@ -56,5 +60,5 @@ function heapSort(arr, sortType='ASC') {
   return sortedList;
   
 }
-const array = [10,4,6,9,2,6,8];
+const array = [10,4,6,9,2,6,8,1];
 console.log(heapSort(array))
