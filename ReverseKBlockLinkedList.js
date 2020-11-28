@@ -35,6 +35,7 @@ function reverseBlockOfKNodesInLinkedList(head, k) {
     let temp2 = cur, temp3;
     while(cur ) {
         temp = getKPlusPOneThNode(k, cur);
+        
         let i=0;
         while(i<k && cur) {
             if(i==0) {
@@ -63,5 +64,5 @@ linkedList.addNodeAtLast(8);
 linkedList.addNodeAtLast(9);
 linkedList.addNodeAtLast(10);
 
-linkedList.head = reverseBlockOfKNodesInLinkedList(linkedList.head, 6);
+linkedList.head = reverseBlockOfKNodesInLinkedList(linkedList.head, 3);
 linkedList.displayList();

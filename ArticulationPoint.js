@@ -1,0 +1,7 @@
+/*
+if there graph a vertex such that if we remove that vertex then the graph becomes 
+disconnected then that vertex is called articulation point
+
+no graph should contain a articulation point
+
+*/

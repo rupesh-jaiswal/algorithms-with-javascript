@@ -94,7 +94,7 @@ class LinkedList {
             if(current==null) {
                 console.log('posiiton does not exists');
             }else {
-                
+                positionNode.next = current.next;
             }
         }
     }
@@ -118,24 +118,40 @@ class LinkedList {
     }
 
     reversePairWise() {
-
+        
     }
 }
 
+function reverseRecursive(head) {
+    if(!head) {
+        return null;
+    }
+    if(!head.next) {
+        return head
+    }
+
+    const secondElement = head.next;
+    head.next = null;
+    const reverseList= reverseRecursive(secondElement);
+    secondElement.next = head;
+    return reverseList;
+}
 function reversePairWiseRecursive(head) {
     let temp;
     if(head==null || head.next==null) {
-        return;
+        return head;
     }else {
         // reverse first pair;
         temp = head.next;
         head.next = temp.next;
         temp.next = head;
         head = temp;
+        head.next.next = reversePairWiseRecursive(head.next.next);
+        return head;
     }
 }
 exports.LinkedList = LinkedList;
-
+exports.LinkedListNode = LinkedListNode;
 // const linkedList = new LinkedList();
 // linkedList.addNodeAtFirst(5);
 // linkedList.addNodeAtFirst(2);
@@ -150,3 +166,13 @@ exports.LinkedList = LinkedList;
 // linkedList.reverseLinkedList();
 // linkedList.displayList();
 
+// const linkedList = new LinkedList();
+// linkedList.addNodeAtLast(1);
+// linkedList.addNodeAtLast(2);
+// linkedList.addNodeAtLast(3);
+// linkedList.addNodeAtLast(4);
+// linkedList.addNodeAtLast(5);
+// linkedList.addNodeAtLast(6);
+// linkedList.addNodeAtLast(7);
+// linkedList.head = reversePairWiseRecursive(linkedList.head);
+// linkedList.displayList();
