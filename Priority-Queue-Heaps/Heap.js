@@ -20,6 +20,35 @@ function heapify(heap, type) {
     }
 }
 
+function percolateDown(heap) {
+    let i=0;
+    const minIndex = Math.floor(heap.length/2)-1;
+    while(i<=minIndex) {
+        const leftChild = getLeftChild(heap, i);
+        const rightChild = getRightChild(heap, i);
+        if(leftChild !==-1 && rightChild!==-1) {
+            if(heap[i]>Math.min(leftChild, rightChild)) {
+                if(leftChild<rightChild) {
+                    swap(heap, i, 2*i+1);
+                    i=2*i+1;
+                }else {
+                    swap(heap, i, 2*i+2);
+                    i=2*i+2;
+                }
+            }else {
+                break;
+            }
+        }else if(leftChild!==-1){
+            if(heap[i]>leftChild) {
+                swap(heap, i, 2*i+1);
+                i=2*i+1;
+            }else {
+                break;
+            }
+        }
+    }
+}
+
 function getLeftChild(heap, i) {
     const leftIndex = 2*i+1;
     if(leftIndex>=heap.length) {
@@ -71,35 +100,29 @@ class Heap {
         const rightChild = getRightChild(this.heap, 0);
         const deletedElement = this.heap.shift();
         this.heap.unshift(this.heap.pop());
-        // if(leftChild !==-1 && rightChild!==-1) {
-        //     if(leftChild>rightChild) {
-        //         this.heap.splice(1, 1);
-        //         this.heap.push(leftChild);
-        //     }else {
-        //         this.heap.splice(2,1);
-        //         this.heap.push(rightChild);
-        //     }
-        // }
-        heapify(this.heap, this.type);
+        percolateDown(this.heap);
         return deletedElement;    
     }
+
     display() {
         console.log(this.heap.join(', '));
     }
 }
 
-exports = {
+module.exports = {
     Heap,
     heapify,
 }
 
-const arr = [10, 5, 11, 56, 3, 18, 2, 19];
-const minHeap = new Heap(Heap.TYPE.MIN);
-minHeap.add(arr);
-minHeap.display();
-console.log(minHeap.delete());
-console.log('ater delete');
-minHeap.display();
-const maxHeap = new Heap(Heap.TYPE.MAX);
-maxHeap.add(arr);
-maxHeap.display();
+// const arr = [10, 5, 11, 56, 3, 18, 2, 19];
+// const minHeap = new Heap(Heap.TYPE.MIN);
+// minHeap.add(arr);
+// minHeap.display();
+// console.log(minHeap.delete());
+// console.log('ater delete');
+// minHeap.display();
+// const maxHeap = new Heap(Heap.TYPE.MAX);
+// maxHeap.add(arr);
+// maxHeap.display();
+
+//  heapSort
