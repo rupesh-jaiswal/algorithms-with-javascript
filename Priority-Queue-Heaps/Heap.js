@@ -20,10 +20,10 @@ function heapify(heap, type) {
     }
 }
 
-function percolateDown(heap) {
-    let i=0;
+function percolateDown(heap, i) {
+    //let i=0;
     const minIndex = Math.floor(heap.length/2)-1;
-    while(i<=minIndex) {
+    while(i<=heap.length) {
         const leftChild = getLeftChild(heap, i);
         const rightChild = getRightChild(heap, i);
         if(leftChild !==-1 && rightChild!==-1) {
@@ -45,6 +45,8 @@ function percolateDown(heap) {
             }else {
                 break;
             }
+        }else {
+            break;
         }
     }
 }
@@ -100,7 +102,7 @@ class Heap {
         const rightChild = getRightChild(this.heap, 0);
         const deletedElement = this.heap.shift();
         this.heap.unshift(this.heap.pop());
-        percolateDown(this.heap);
+        percolateDown(this.heap, 0);
         return deletedElement;    
     }
 
@@ -112,6 +114,7 @@ class Heap {
 module.exports = {
     Heap,
     heapify,
+    percolateDown,
 }
 
 // const arr = [10, 5, 11, 56, 3, 18, 2, 19];
