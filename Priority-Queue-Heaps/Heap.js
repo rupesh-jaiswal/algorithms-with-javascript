@@ -18,6 +18,7 @@ function heapify(heap, type) {
             break;
         }
     }
+    return i;
 }
 
 function percolateDown(heap, i) {
@@ -115,6 +116,8 @@ module.exports = {
     Heap,
     heapify,
     percolateDown,
+    getLeftChild,
+    getRightChild,
 }
 
 // const arr = [10, 5, 11, 56, 3, 18, 2, 19];
