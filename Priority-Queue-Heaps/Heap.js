@@ -118,6 +118,7 @@ module.exports = {
     percolateDown,
     getLeftChild,
     getRightChild,
+    swap,
 }
 
 // const arr = [10, 5, 11, 56, 3, 18, 2, 19];
