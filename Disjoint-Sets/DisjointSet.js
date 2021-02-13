@@ -43,7 +43,7 @@ module.exports = {
     DisjointSet,
 };
 
-const ds = new DisjointSet()
+// const ds = new DisjointSet()
 // ds.makeSet(10);
 // console.log('set of 2', ds.find(2));
 // ds.union(1,2);
@@ -57,11 +57,11 @@ const ds = new DisjointSet()
 // console.log('set of 9', ds.find(9));
 // console.log(ds.S);
 
-ds.makeSet(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
-console.log('set of B', ds.find('B'));
-ds.union('A','B');
-ds.union('B','F');
-console.log('set of A', ds.find('A'));
-console.log('set of F', ds.find('F'));
+// ds.makeSet(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+// console.log('set of B', ds.find('B'));
+// ds.union('A','B');
+// ds.union('B','F');
+// console.log('set of A', ds.find('A'));
+// console.log('set of F', ds.find('F'));
 
-console.log(ds.S);
+// console.log(ds.S);
