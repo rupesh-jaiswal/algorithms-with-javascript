@@ -102,42 +102,43 @@ class Trie {
     }
 
     deleteNode (root, word, index) {
-        console.log(root, word, index);
         if(word[index]) {
+            // word has character
             if(!root) {
+                // not found
                 return false;
             }
-            // if(word[index+1]) {
-            //     if(!root.child[word[index+1]]) {
-            //         return false;
-            //     }
-            // }else if(root.data == word[index]) {
-
-            // }
         }
         if(!word[index+1]) {
-            if(Object.keys(root).length>0) {
-                if(root.endOfString && root.data == word[index]) {
-                    root.endOfString = 0;
-                    return 'deleted';
-                }else {
-                    return false;
+            // word does not have next character
+            if(root.endOfString && root.data == word[index]) {
+                // match found set endOfString to 0
+                root.endOfString = 0;
+                if(Object.keys(root.child).length>0) {
+                    // not only child 
+                    return 'deleted'
                 }
-            }else {
+                // only child hence delete the node
                 return 'delete parent';
+            }else {
+                return false;
             }
         }else {
+            // next character is there in word
             const deleted = this.deleteNode(root.child[word[index+1]], word, index+1);
             if(deleted =='deleted') {
                 return true;
             }else if(deleted == 'delete parent') {
-                delete root.child[word[index]];
+                // delete from parent the next char object;
+                delete root.child[word[index+1]];
                 if(Object.keys(root.child).length==0) {
+                    // if there are no other child delete the current parent also
                     return 'delete parent';
                 }else {
                     return true;
                 }
             }else {
+                // did not find the word
                 return false;
             }
         }
@@ -146,13 +147,11 @@ class Trie {
     delete(word) {
         if(!word) return;
         const deleted = this.deleteNode(this.root[word[0]], word, 0);
-        console.log('deleted----------',deleted);
         if(deleted) {
             console.log(`${word} was deleted`);
         }else {
             console.log(`${word} was not found`);
         }
-        //console.log(this.root);
     }
 }
 
@@ -169,7 +168,7 @@ trie.search('BA');
 trie.search('BA');
 trie.search('APPLE');
 trie.search('ZETA!');
-trie.delete('APPLE');
-trie.delete('BOAT');
+trie.delete('BAT');
 
 trie.display();
+console.log(trie.root);
