@@ -72,6 +72,11 @@ class PriorityQueue {
         heapify(this.heap, 'min', this.heap.length-1);
     }
 
+    addNode(node) {
+        this.heap.push(node);
+        heapify(this.heap, 'min', this.heap.length-1);
+    }
+    
     remove() {
         const deletedNode = this.heap.shift();
 
