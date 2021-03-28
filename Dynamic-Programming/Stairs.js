@@ -33,6 +33,7 @@ function steps(ways) {
         }
     })
     const ways = numOfWays.map(path => [...path, n]);
+    console.log(ways);
     return ways;
  }
 const X= [1,2];
