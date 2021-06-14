@@ -19,7 +19,7 @@ function getMaxValue(w, v, noOfItems, targetWeight) {
         for(let j=1;j<=targetWeight;j++) {
             if(w[i]>j) {
                 dp2[j] = dp1[j];
-            }else {
+            }else { 
                 dp2[j] = Math.max(dp1[j], v[i] + dp1[j-w[i]]);
             }
         }

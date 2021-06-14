@@ -28,7 +28,6 @@ function getMaxValue(w, v, noOfItems, targetWeight) {
         swap(dp1, dp2);
         dp2 = new Array(noOfItems*1000).fill(Infinity);
     }
-    console.log(dp1);   
     let result;
     for(let i=0;i<=noOfItems*1000;i++) {
         if(dp1[i]<=targetWeight) result = i;
