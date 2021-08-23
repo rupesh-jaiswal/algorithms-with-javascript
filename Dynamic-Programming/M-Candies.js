@@ -29,11 +29,32 @@ function candies(arr, k) {
     console.log("ways: ", ways);
     console.log('iterations:', count);
 }
+// other way 
+function candiesOther(arr, k) {
+    const mod = 1000000000+7;
+    let dp = new Array(arr.length+1).fill(0).map(() => new Array(k+1).fill(0));
+    // set i on 1 child
+    for(let j=0; j<=arr[0] && j<=k;j++) {
+        dp[0][j] = 1;
+    }
+    for(let i=1;i<arr.length;i++) {
+        for(let j=0; j<=k;j++) {
+            if(j==0) {
+                dp[i][j] = dp[i-1][j];
+            }else {
+                dp[i][j] = (mod+dp[i][j-1]%mod+dp[i-1][j]%mod-((j-arr[i]-1)>=0?dp[i-1][j-arr[i]-1]%mod:0))%mod;
+            }
+        }
+    }
+    //console.log(dp);
+    console.log(dp[arr.length-1][k]);
+
+}
 const getArrayFrfomString = (str) => {
     return str.split(' ').map(e=> parseInt(e));
 }
-const arr = getArrayFrfomString('1 2 3');
+const arr = getArrayFrfomString('100000 100000 100000 100000');
 
-candies(arr, 4);
-candies([9], 10);
-candies([0,0], 0);
+candiesOther(arr, 100000);
+// candiesOther([9], 10);
+// candiesOther([0,0], 0);
