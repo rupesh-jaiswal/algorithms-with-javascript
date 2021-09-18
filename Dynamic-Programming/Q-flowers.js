@@ -4,18 +4,21 @@
 
 // can be optimized using queues
 const ReadInput = require('./Input');
-function flowers(h, b, index, previousHeight,max, currentValue) {
-    if(index==h.length) {
+let iteration =0;
+function flowers(h, b, index, previousHeightIndex,max, currentValue) {
+    iteration++;
+
+    if(index>=h.length) {
         if(currentValue>max.value) {
             return max.value = currentValue;
         }
         return;
     }
-    if(h[index]>previousHeight) {
-        flowers(h, b, index+1, h[index], max, currentValue+b[index]);
+    if(h[index]>h[previousHeightIndex]) {
+        flowers(h, b, index+1, index, max, currentValue+b[index]);
     }
         
-    return flowers(h, b, index+1, previousHeight, max, currentValue);
+    return flowers(h, b, index+1, previousHeightIndex, max, currentValue);
 }
 
 async function getInput() {
@@ -26,7 +29,7 @@ async function getInput() {
     const b = input.readNextLine().split(' ').map(e => +e);
     return [n, h, b];
 }
-async function findWays() {
+async function findWays1() {
     const [n, h,  b] = await getInput();
     let maxbeauty = 0;
     for(let i=0;i<h.length;i++) {
@@ -37,5 +40,13 @@ async function findWays() {
         }
     }
     console.log(maxbeauty);
+    console.log(iteration);
+
 }
-findWays();
+async function findWays2() {
+    const [n, h,  b] = await getInput();
+
+}
+//findWays1();
+
+findWays2()

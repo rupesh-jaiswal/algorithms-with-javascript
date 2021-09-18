@@ -53,4 +53,4 @@ const days2 = 1;
 console.log(getMaxPointsIterative(activities, days1));
 // console.log(getMaxPoints(activities, days1));
 
-// console.log(getMaxPoints(activities2, 1));
+// console.log(getMaxPoints(activities2, 1));"x...o.x...o"

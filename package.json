@@ -1,0 +1,20 @@
+{
+  "name": "algorithms-with-javascript",
+  "version": "1.0.0",
+  "description": "Algorithms implementation in Javascript",
+  "main": "AddNumbersInLinkedList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rupesh-jaiswal/algorithms-with-javascript.git"
+  },
+  "keywords": [],
+  "author": "Rupesh Jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rupesh-jaiswal/algorithms-with-javascript/issues"
+  },
+  "homepage": "https://github.com/rupesh-jaiswal/algorithms-with-javascript#readme"
+}
