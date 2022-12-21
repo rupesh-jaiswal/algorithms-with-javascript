@@ -6,6 +6,7 @@ const minimumAppends = (s) => {
     while(l<r) {
         if(s[l]!==s[r]) {
             count=l+1;
+            r=s.length-1;
         }else {
             r--;
         }
@@ -14,7 +15,4 @@ const minimumAppends = (s) => {
 
     console.log(count);
 }
-minimumAppends("abede");
-minimumAppends("malayalam");
-minimumAppends("abcdefg");
-minimumAppends("aabb");
+minimumAppends("oqycntornscygodzdctxnhoc");
