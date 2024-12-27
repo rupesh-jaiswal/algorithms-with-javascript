@@ -1,3 +1,5 @@
+// Problem: Generate all the strings of length n drawn from 0... k – 1.
+
 function kString(A, n, k) {
     if(n<1) {
         console.log(A);

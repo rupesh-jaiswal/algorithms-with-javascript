@@ -1,3 +1,14 @@
+/**
+ * Problem-5 Finding the length of connected cells of 1s (regions) in an matrix of Os and
+1s: Given a matrix, each of which may be 1 or 0. The filled cells that are connected form a
+region. Two cells are said to be connected if they are adjacent to each other horizontally,
+vertically or diagonally. There may be several regions in the matrix. How do you find the
+largest region (in terms of number of cells) in the matrix?
+
+
+ */
+
+
 function create2DArray(rows, columns) {
     return new Array(rows).fill(0).map(() => new Array(columns).fill(false));
 }

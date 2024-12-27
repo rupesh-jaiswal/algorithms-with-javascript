@@ -3,8 +3,11 @@ function towerOfHanoi(n, fromPeg, toPeg, auxPeg) {
         console.log(`Move disk 1 from ${fromPeg} to ${toPeg}`);
         return;
     }
+    // move from A to B using C as auxillary
     towerOfHanoi(n-1, fromPeg, auxPeg, toPeg);
     console.log(`Move ${n} from ${fromPeg} to ${toPeg}`);
+
+    //move from B to C using a As Auxillary
     towerOfHanoi(n-1, auxPeg, toPeg, fromPeg);
 }
 

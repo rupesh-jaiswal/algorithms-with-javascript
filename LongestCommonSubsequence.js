@@ -55,7 +55,7 @@ function getLCS(a,b) {
     console.log(subSequence);
     // complexity is m*n
 }
-const a="stone";
+const a="stoneft";
 const b="longest";
 
 console.log(getLCS(a, b));
