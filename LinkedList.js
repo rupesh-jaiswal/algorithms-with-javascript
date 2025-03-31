@@ -148,8 +148,10 @@ function reversePairWiseRecursive(head) {
         head = temp;
         head.next.next = reversePairWiseRecursive(head.next.next);
         return head;
-    }
+    } 
 }
+
+
 exports.LinkedList = LinkedList;
 exports.LinkedListNode = LinkedListNode;
 // const linkedList = new LinkedList();
@@ -157,12 +159,14 @@ exports.LinkedListNode = LinkedListNode;
 // linkedList.addNodeAtFirst(2);
 // linkedList.addNodeAtFirst(3);
 // linkedList.addNodeAtLast(6);
-// linkedList.displayList();
 // linkedList.addNodeAtIndex(9,3);
 // linkedList.displayList();
 // console.log('before delete');
 // linkedList.deleteLast();
 // console
+// const recursiveHead = reverseRecursive(linkedList.head);
+// console.log('----reverse recursive -------')
+// linkedList.displayList.call({ head: recursiveHead});
 // linkedList.reverseLinkedList();
 // linkedList.displayList();
 
