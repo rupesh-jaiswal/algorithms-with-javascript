@@ -20,4 +20,4 @@ const A = [1,0,0,1,0,1,0,1,0,1];
 const B= 2;
 
 const A1 = [1, 0];
-console.log(solve(A1, 1));
+console.log(solve(A, B));
