@@ -1,6 +1,6 @@
 // stack using linked list
 
-const { LinkedList }  = require('./LinkedList');
+const { LinkedList }  = require('../LinkedList/LinkedList');
 class Stack extends LinkedList{
 
     constructor() {
